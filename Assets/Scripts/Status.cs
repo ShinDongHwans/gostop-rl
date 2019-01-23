@@ -18,4 +18,15 @@ public class Status
             this.status[card.number-1][card.kind]++;
         }
     }
+    public bool Same(Status stat1)
+    {
+        for (int i = 0; i < 12; i++)
+        {
+            for(int j = 0; j<8; j++)
+            {
+                if (stat1.status[i][j] !=status[i][j]) return false;
+            }
+        }
+        return true;
+    }
 }

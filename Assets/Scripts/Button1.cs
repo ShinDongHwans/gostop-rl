@@ -7,11 +7,82 @@ public class Button1 : MonoBehaviour
 {
     public Card card;
 
-    public void OnClick()
+    public void OnClick2p()
     {
-        if(GameManager.instance.gaming == true)
+        if(GameManager.instance.realgaming == true)
         {
 
+            if (card != null)
+            {
+                GameManager.instance.turn++;
+                Player player1 = GameManager.instance.player1;
+                Player player2 = GameManager.instance.player2;
+                if (GameManager.instance.turn % 2 == 1)
+                {
+                    List<Card> ground = GameManager.instance.ground;
+                    Card comparecard = Compare(card, ground);
+                    if (comparecard == null)
+                    {
+                        ground.Add(card);
+                        DrawNewCardFuck(card);
+                        player1.hand.Remove(card);
+                    }
+                    else
+                    {
+                        DrawNewCard(card, comparecard);
+                    }
+                    if (ground.Count == 0)
+                    {
+                        TimerReset("쓸~~");
+                        Steal(1);
+                    }
+                    player1.point = player1.CalculatePoint();
+                    int score = GameManager.instance.player1.CalculatePoint();
+                    GameManager.instance.ShowCurrentHand1();
+                    GameManager.instance.ShowPlayer1Ground();
+                    if (score >= 7)
+                    {
+                        GameManager.instance.gaming = false;
+                        GameObject.Find("Win").GetComponent<Text>().text = "Player1 win!!";
+                    }
+                }
+                else
+                {
+                    List<Card> ground = GameManager.instance.ground;
+                    Card comparecard = Compare2(card, ground);
+                    if (comparecard == null)
+                    {
+                        ground.Add(card);
+                        DrawNewCardFuck2(card);
+                        player2.hand.Remove(card);
+                    }
+                    else
+                    {
+                        DrawNewCard2(card, comparecard);
+                    }
+                    if (ground.Count == 0)
+                    {
+                        TimerReset("쓸~~");
+                        Steal(2);
+                    }
+                    player2.point = player2.CalculatePoint();
+                    int score = GameManager.instance.player2.CalculatePoint();
+                    GameManager.instance.ShowCurrentHand2();
+                    GameManager.instance.ShowPlayer2Ground();
+                    if (score >= 7)
+                    {
+                        GameManager.instance.gaming = false;
+                        GameObject.Find("Win").GetComponent<Text>().text = "Player2 win!!";
+                    }
+                }
+            }
+        }
+    }
+
+    public void OnClick1p()
+    {
+        if (GameManager.instance.realgaming == true)
+        {
             if (card != null)
             {
                 GameManager.instance.turn++;
@@ -36,42 +107,8 @@ public class Button1 : MonoBehaviour
                         //TimerReset("쓸~~");
                         Steal(1);
                     }
-                    int score = GameManager.instance.player1.CalculatePoint();
-                    //GameManager.instance.ShowCurrentHand1();
-                    //GameManager.instance.ShowPlayer1Ground();
-                    if (score >= 7)
-                    {
-                        GameManager.instance.gaming = false;
-                        //GameObject.Find("Win").GetComponent<Text>().text = "Player1 win!!";
-                    }
-                }
-                else
-                {
-                    List<Card> ground = GameManager.instance.ground;
-                    Card comparecard = Compare2(card, ground);
-                    if (comparecard == null)
-                    {
-                        ground.Add(card);
-                        DrawNewCardFuck2(card);
-                        player2.hand.Remove(card);
-                    }
-                    else
-                    {
-                        DrawNewCard2(card, comparecard);
-                    }
-                    if (ground.Count == 0)
-                    {
-                        //TimerReset("쓸~~");
-                        Steal(2);
-                    }
-                    int score = GameManager.instance.player2.CalculatePoint();
-                    //GameManager.instance.ShowCurrentHand2();
-                    //GameManager.instance.ShowPlayer2Ground();
-                    if (score >= 7)
-                    {
-                        GameManager.instance.gaming = false;
-                        //GameObject.Find("Win").GetComponent<Text>().text = "Player2 win!!";
-                    }
+                    player1.point = player1.CalculatePoint();
+                    GameManager.instance.AISelection();
                 }
             }
         }

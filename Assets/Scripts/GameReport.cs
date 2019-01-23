@@ -16,7 +16,8 @@ public class GameReport
     {
         
         this.turn = turn;
-        this.myhand = hand;
+        myhand = new List<Card>();
+        CopyThem(hand, this.myhand);
         this.ground = new Status(ground);
         this.myown = new Status(own);
         this.enemyown = new Status(oppositeown);
@@ -24,5 +25,14 @@ public class GameReport
         // 첫 번째는 승리 수, 두 번째는 패배 수
         for (int i = 0; i < 10; i++)
             statisticsaboutselection.Add(new List<int> {0, 0});
+    }
+
+
+    void CopyThem(List<Card> input, List<Card> output)
+    {
+        foreach (Card card in input)
+        {
+            output.Add(card);
+        }
     }
 }

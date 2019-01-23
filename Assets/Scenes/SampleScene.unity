@@ -854,7 +854,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 144358526}
-        m_MethodName: OnClick
+        m_MethodName: OnClick1p
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1730,6 +1730,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Card15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473875760106729212, guid: 11efd63e433911d40b88eb30e7224879,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClick1p
       objectReference: {fileID: 0}
     - target: {fileID: 1967660297254996900, guid: 11efd63e433911d40b88eb30e7224879,
         type: 3}
@@ -3072,6 +3077,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card19
       objectReference: {fileID: 0}
+    - target: {fileID: 2473875760106729212, guid: 11efd63e433911d40b88eb30e7224879,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClick1p
+      objectReference: {fileID: 0}
     - target: {fileID: 1967660297254996900, guid: 11efd63e433911d40b88eb30e7224879,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3507,7 +3517,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 603399133}
-        m_MethodName: OnClick
+        m_MethodName: OnClick1p
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3569,6 +3579,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Card14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473875760106729212, guid: 11efd63e433911d40b88eb30e7224879,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClick1p
       objectReference: {fileID: 0}
     - target: {fileID: 1967660297254996900, guid: 11efd63e433911d40b88eb30e7224879,
         type: 3}
@@ -5268,7 +5283,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 880639219}
-        m_MethodName: OnClick
+        m_MethodName: OnClick1p
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5543,7 +5558,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 909338916}
-        m_MethodName: OnClick
+        m_MethodName: OnClick1p
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5670,7 +5685,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 931415093}
-        m_MethodName: OnClick
+        m_MethodName: OnClick1p
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6383,6 +6398,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card17
       objectReference: {fileID: 0}
+    - target: {fileID: 2473875760106729212, guid: 11efd63e433911d40b88eb30e7224879,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClick1p
+      objectReference: {fileID: 0}
     - target: {fileID: 1967660297254996900, guid: 11efd63e433911d40b88eb30e7224879,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6731,7 +6751,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1023347160}
-        m_MethodName: OnClick
+        m_MethodName: OnClick1p
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7015,6 +7035,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Card13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473875760106729212, guid: 11efd63e433911d40b88eb30e7224879,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClick1p
       objectReference: {fileID: 0}
     - target: {fileID: 1967660297254996900, guid: 11efd63e433911d40b88eb30e7224879,
         type: 3}
@@ -7455,6 +7480,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Card18
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473875760106729212, guid: 11efd63e433911d40b88eb30e7224879,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClick1p
       objectReference: {fileID: 0}
     - target: {fileID: 1967660297254996900, guid: 11efd63e433911d40b88eb30e7224879,
         type: 3}
@@ -8256,7 +8286,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1272237716}
-        m_MethodName: OnClick
+        m_MethodName: OnClick1p
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8383,7 +8413,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1280735606}
-        m_MethodName: OnClick
+        m_MethodName: OnClick1p
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8815,6 +8845,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Card16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473875760106729212, guid: 11efd63e433911d40b88eb30e7224879,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClick1p
       objectReference: {fileID: 0}
     - target: {fileID: 1967660297254996900, guid: 11efd63e433911d40b88eb30e7224879,
         type: 3}
@@ -9710,7 +9745,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1515896287}
-        m_MethodName: OnClick
+        m_MethodName: OnClick1p
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10736,6 +10771,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card12
       objectReference: {fileID: 0}
+    - target: {fileID: 2473875760106729212, guid: 11efd63e433911d40b88eb30e7224879,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClick1p
+      objectReference: {fileID: 0}
     - target: {fileID: 1967660297254996900, guid: 11efd63e433911d40b88eb30e7224879,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11027,6 +11067,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Card10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473875760106729212, guid: 11efd63e433911d40b88eb30e7224879,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClick1p
       objectReference: {fileID: 0}
     - target: {fileID: 1967660297254996900, guid: 11efd63e433911d40b88eb30e7224879,
         type: 3}
@@ -12407,7 +12452,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1944799483}
-        m_MethodName: OnClick
+        m_MethodName: OnClick1p
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12787,6 +12832,8 @@ MonoBehaviour:
   turn: 0
   timer: 0
   gaming: 1
+  realgaming: 0
+  gamenumber: 0
 --- !u!4 &2041010342
 Transform:
   m_ObjectHideFlags: 0
@@ -13256,6 +13303,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Card11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473875760106729212, guid: 11efd63e433911d40b88eb30e7224879,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClick1p
       objectReference: {fileID: 0}
     - target: {fileID: 1967660297254996900, guid: 11efd63e433911d40b88eb30e7224879,
         type: 3}

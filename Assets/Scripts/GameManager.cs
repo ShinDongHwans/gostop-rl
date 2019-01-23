@@ -7,16 +7,23 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public Player player1 = new Player(1);
+    public List<Card> player1hand = new List<Card>();
     public Player player2 = new Player(2);
+    public List<Card> player2hand = new List<Card>();
     public List<Card> carddeck;
     public List<Card> ground;
+    public List<Card> groundcopy = new List<Card>();
     public List<Card> shuffleddeck;
+    public List<Card> shuffleddeckcopy = new List<Card>();
     public List<int> countnumber;
     public int turn;
     public float timer;
     int waitingTime;
     public bool gaming;
+    public bool realgaming = false;
     public int gamenumber = 0;
+    public int ai1win = 0;
+    public int ai2win = 0;
 
     public void Initializing()
     {
@@ -71,6 +78,22 @@ public class GameManager : MonoBehaviour
         {
             player2.hand.Add(shuffleddeck[0]);
             shuffleddeck.RemoveAt(0);
+        }
+    }
+
+    public void ClearScreen()
+    {
+        for(int i = 0; i < 6; i++)
+        {
+            for(int j = 0; j < 10; j++)
+            {
+                GameObject gameobject = GameObject.Find("Eat1" + i + j);
+                if(gameobject != null)
+                {
+                    gameobject.GetComponent<Image>().sprite = Card.defaultimage;
+                    GameObject.Find("Eat1" + i + j + " (1)").GetComponent<Image>().sprite = Card.defaultimage;
+                }
+            }
         }
     }
 
@@ -251,9 +274,8 @@ public class GameManager : MonoBehaviour
     public void StartAI() {
         Ai ai1 = player1.ai;
         Ai ai2 = player2.ai;
-        player1.point = 0;
-        player2.point = 0;
-        while(turn < 20 && player1.point <7 && player2.point < 7)
+
+        while (turn < 20 && player1.point <7 && player2.point < 7)
         {
             if(turn%2 == 0)
             {
@@ -269,11 +291,14 @@ public class GameManager : MonoBehaviour
         }
         if (player1.point >= 7)
         {
+            ai1win++;
             ai1.GameFinish(0);
             ai2.GameFinish(1);
+            
         }
         else if(player2.point >= 7)
         {
+            ai2win++;
             ai2.GameFinish(0);
             ai1.GameFinish(1);
         }
@@ -284,25 +309,53 @@ public class GameManager : MonoBehaviour
             ai2.GameFinish(0);
             ai2.GameFinish(1);
         }
-        /*
-        GameObject.Find("Score1").GetComponent<Text>().text = "점수1: " + player1.CalculatePoint();
-        GameObject.Find("Score2").GetComponent<Text>().text = "점수2: " + player2.CalculatePoint();
-        ShowPlayer1Ground();
-        ShowPlayer2Ground();
-        */
-        Debug.Log("player1 score is " + player1.point);
-        Debug.Log("player2 score is " + player2.point);
-        gaming = false;
-        if(gamenumber < 1000)
+        if (gamenumber < 1000)
         {
-            StartNewGame();
+            StartReGame();
+        }
+        else
+        {
+            gaming = false;
+            realgaming = true;
+            StartRealGame();
+        }
+    }
+
+    public void AISelection()
+    {
+        Ai ai2 = player2.ai;
+            
+        int card = ai2.MyTurn();
+        Debug.Log("Now" + turn+"th turn Ai select " + card);
+        SelectCardAIVSPlayer(player2.hand[card]);
+        if (player1.point >= 7)
+        {
+            Debug.Log("player1 win");
+            Debug.Log("player1 gets " + player1.CalculatePoint());
+            Debug.Log("player2 gets " + player2.CalculatePoint());
+            ai2.GameFinish(1);
+            StartRealGame();
+        }
+        else if (player2.point >= 7)
+        {
+            Debug.Log("player2 win");
+            Debug.Log("player1 gets " + player1.CalculatePoint());
+            Debug.Log("player2 gets " + player2.CalculatePoint());
+            ai2.GameFinish(0);
+            StartRealGame();
+        }
+    }
+
+    void CopyThem(List<Card> input, List<Card> output)
+    {
+        foreach(Card card in input)
+        {
+            output.Add(card);
         }
     }
     
     public void StartNewGame()
     {
-        print("gamenumber is " + gamenumber);
-        gamenumber++;
         Initializing();
         player1.Initializing();
         player2.Initializing();
@@ -311,14 +364,46 @@ public class GameManager : MonoBehaviour
         InitialCard(10);
         SpreadtheCard(8);
         Sort();
+        CopyThem(ground, groundcopy);
+        CopyThem(player1.hand, player1hand);
+        CopyThem(player2.hand, player2hand);
+        CopyThem(shuffleddeck, shuffleddeckcopy);
         StartAI();
+    }
+
+    public void StartReGame()
+    {
+        gamenumber++;
+        Initializing();
+        player1.Initializing();
+        player2.Initializing();
+        CopyThem(groundcopy, ground);
+        CopyThem(player1hand, player1.hand);
+        CopyThem(player2hand, player2.hand);
+        CopyThem(shuffleddeckcopy, shuffleddeck);
+        StartAI();
+    }
+
+    public void StartRealGame()
+    {
+        Debug.Log("AI1 wins " + ai1win + " games");
+        Debug.Log("AI2 wins " + ai2win + " games");
+        Debug.Log("gamenumber is " + gamenumber);
+        gamenumber++;
+        Initializing();
+        ClearScreen();
+        player1.Initializing();
+        player2.Initializing();
+        CopyThem(groundcopy, ground);
+        CopyThem(player1hand, player1.hand);
+        CopyThem(player2hand, player2.hand);
+        CopyThem(shuffleddeckcopy, shuffleddeck);
     }
 
     public void SelectCard(Card card)
     {
         if (gaming == true)
         {
-
             if (card != null)
             {
                 turn++;
@@ -366,6 +451,36 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SelectCardAIVSPlayer(Card card)
+    {
+        if (realgaming == true)
+        {
+            if (card != null)
+            {
+                turn++;
+                if (turn % 2 == 0)
+                {
+                    Card comparecard = Compare2(card, ground);
+                    if (comparecard == null)
+                    {
+                        ground.Add(card);
+                        DrawNewCardFuck2(card);
+                        player2.hand.Remove(card);
+                    }
+                    else
+                    {
+                        DrawNewCard2(card, comparecard);
+                    }
+                    if (ground.Count == 0)
+                    {
+                        //TimerReset("쓸~~");
+                        Steal(2);
+                    }
+                    player2.point = player2.CalculatePoint();
+                }
+            }
+        }
+    }
 
     public void DrawNewCardFuck(Card card)
     {
@@ -590,32 +705,20 @@ public class GameManager : MonoBehaviour
         timer = 0f;
         waitingTime = 3;
         StartNewGame();
-        /*
-        ShowCurrentHand1();
-        ShowCurrentGround();
-        */
     }
 
     
     // Update is called once per frame
     void Update()
     {
-        /*
-        if (gaming == true)
+        if (realgaming == true)
         {
-            timer += Time.deltaTime;
             ShowCurrentGround();
-
-            GameObject.Find("Win").GetComponent<Text>().text = "";
-            if (timer > waitingTime)
-            {
-                timer = 0;
-            }
-            if (turn % 2 == 0)
-                ShowCurrentHand1();
-            else
-                ShowCurrentHand2();
+            ShowCurrentHand1();
+            ShowPlayer1Ground();
+            ShowPlayer2Ground();
+            GameObject.Find("Score1").GetComponent<Text>().text = "점수1: " + player1.point;
+            GameObject.Find("Score2").GetComponent<Text>().text = "점수2: " + player2.point;
         }
-        */
     }
 }
