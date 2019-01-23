@@ -309,7 +309,7 @@ public class GameManager : MonoBehaviour
             ai2.GameFinish(0);
             ai2.GameFinish(1);
         }
-        if (gamenumber < 1000)
+        if (gamenumber < 7000)
         {
             StartReGame();
         }
